@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM Vehículos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>ABM de Vehículos</h1>
+
+    <!-- Formulario de Datos -->
+    <div id="form-datos">
+        <h2>Lista de Vehículos</h2>
+        <select id="filtro">
+            <option value="todos">Todos</option>
+            <option value="auto">Auto</option>
+            <option value="camion">Camión</option>
+        </select>
+
+        <div id="column-visibility">
+            <h3>Seleccionar Columnas a Mostrar:</h3>
+            <label><input type="checkbox" value="id" checked> ID</label>
+            <label><input type="checkbox" value="modelo" checked> Modelo</label>
+            <label><input type="checkbox" value="anoFabricacion" checked> Año de Fabricación</label>
+            <label><input type="checkbox" value="velMax" checked> Velocidad Máxima</label>
+            <label><input type="checkbox" value="cantidadPuertas" checked> Cantidad de Puertas</label>
+            <label><input type="checkbox" value="asientos" checked> Asientos</label>
+            <label><input type="checkbox" value="capacidadCarga" checked> Capacidad de Carga</label>
+            <label><input type="checkbox" value="autonomia" checked> Autonomía</label>
+        </div>
+
+        <table id="tabla-vehiculos">
+            <thead>
+                <tr>
+                    <th><button id="id" class="ordenar">ID</button></th>
+                    <th><button id="modelo" class="ordenar">Modelo</button></th>
+                    <th><button id="anoFabricacion" class="ordenar">Año de Fabricación</button></th>
+                    <th><button id="velMax" class="ordenar">Velocidad Máxima</button></th>
+                    <th><button id="cantidadPuertas" class="ordenar">Cantidad de Puertas</button></th>
+                    <th><button id="asientos" class="ordenar">Asientos</button></th>
+                    <th><button id="capacidadCarga" class="ordenar">Capacidad de Carga</button></th>
+                    <th><button id="autonomia" class="ordenar">Autonomía</button></th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas se llenan dinámicamente -->
+            </tbody>
+        </table>
+
+        <button id="calcular">Calcular Velocidad Máxima Promedio</button>
+        <p id="velMax-promedio">Velocidad Máxima Promedio: </p>
+        <button id="agregar">Agregar</button>
+    </div>
+
+    <!-- Formulario ABM -->
+    <div id="form-abm" style="display: none;">
+        <h2 id="form-abm-header">Formulario ABM</h2>
+
+        <select id="filtroABM">
+            <option value="vehiculo">Vehículo</option>
+            <option value="auto">Auto</option>
+            <option value="camion">Camión</option>
+        </select>
+
+        <form id="abm-form">
+            <label>ID:</label>
+            <input type="text" id="idABM" disabled>
+            
+            <label>Modelo:</label>
+            <input type="text" id="modeloABM" required>
+            
+            <label>Año de Fabricación:</label>
+            <input type="number" id="anoFabricacionABM" required>
+            
+            <label>Velocidad Máxima:</label>
+            <input type="number" id="velMaxABM" required>
+            
+            <!-- Campos específicos para auto -->
+            <div id="auto-fields" style="display: none;">
+                <label>Cantidad de Puertas:</label>
+                <input type="number" id="cantidadPuertasABM">
+                <label>Asientos:</label>
+                <input type="number" id="asientosABM">
+            </div>
+            
+            <!-- Campos específicos para camión -->
+            <div id="camion-fields" style="display: none;">
+                <label>Capacidad de Carga:</label>
+                <input type="number" id="capacidadCargaABM">
+                <label>Autonomía:</label>
+                <input type="number" id="autonomiaABM">
+            </div>
+        
+            <button id="guardar" type="submit">Aceptar</button>
+            <button id="cancelar" type="button">Cancelar</button>
+        </form>
+    </div>
+
+    <!-- Spinner -->
+    <div id="spinner-container" style="display: none;">
+        <div class="spinner"></div>
+    </div>
+
+    <script src="js/Vehiculo.js"></script>
+    <script src="js/Auto.js"></script>
+    <script src="js/Camion.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
